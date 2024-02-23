@@ -27,7 +27,7 @@ public class Post {
     @Column(columnDefinition = "LONGBLOB", length = 104857600)
     private byte[] file;
     @Lob
-    private byte[] videoData; // Binärdaten des Videos
+    private byte[] videoData;
     private String encodedFile;
     private String selectedFile;
     private byte[] decodedFile;

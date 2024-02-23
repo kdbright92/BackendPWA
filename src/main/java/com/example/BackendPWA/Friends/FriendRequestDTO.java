@@ -5,7 +5,6 @@ public class FriendRequestDTO {
     private Long requesterId;
     private Long accepterId;
 
-    // Constructors, getters, setters
 
     public FriendRequestDTO() {
     }

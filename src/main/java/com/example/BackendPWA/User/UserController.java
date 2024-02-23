@@ -71,7 +71,7 @@ public class UserController {
         byte[] imageData = userService.getImageData(userId);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.IMAGE_JPEG); // Change the MediaType based on your image type
+        headers.setContentType(MediaType.IMAGE_JPEG);
 
         return new ResponseEntity<>(imageData, headers, HttpStatus.OK);
     }

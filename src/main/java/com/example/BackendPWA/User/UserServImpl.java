@@ -102,12 +102,10 @@ public class UserServImpl implements UserService, UserDetailsService {
         User user = userRepo.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        // Update username
         user.setUsername(newUsername);
         user.setCity(newCity);
         user.setCountry(newCountry);
 
-        // Update password if a new password is provided
         if (newPassword != null && !newPassword.isEmpty()) {
             String encryptedPassword = encoder.encode(newPassword);
             user.setPassword(encryptedPassword);

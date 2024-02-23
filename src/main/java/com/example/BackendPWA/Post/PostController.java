@@ -77,7 +77,6 @@ public class PostController {
         @GetMapping("/getUserPosts/{userId}")
         public ResponseEntity<List<Post>> getUserPosts(@PathVariable Long userId) {
                 try {
-                        // Fetch posts for the specified user ID
                         List<Post> userPosts = postRepository.findByUserId(userId);
                         return ResponseEntity.ok(userPosts);
                 } catch (Exception e) {

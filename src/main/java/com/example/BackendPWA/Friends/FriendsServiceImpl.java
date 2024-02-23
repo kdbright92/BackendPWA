@@ -25,15 +25,7 @@ public class FriendsServiceImpl {
     @Autowired
     private UserRepository userRepository;
 
-/*    public List<User> getPendingFriendRequests(long id) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentUsername = authentication.getName();
-        User user = userRepository.findByUsername(currentUsername).get();
 
-        return friendshipRepository.findByAccepterIdAndStatus(user.getId(), FriendshipStatus.PENDING).stream().map(f -> f.getRequester()).collect(Collectors.toList());
-
-
-    }*/
 public List<Friends> getPendingFriendRequests(long id) {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     String currentUsername = authentication.getName();
@@ -92,11 +84,9 @@ public List<Friends> getPendingFriendRequests(long id) {
 
 
     public List<User> getFriendListFromUser(Long id) {
-        // Assuming FriendshipRepository has a method to fetch friends by user ID
         User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
         List<Friends> friendships = friendshipRepository.findByRequesterAndStatusOrAccepterAndStatus(user, FriendshipStatus.ACCEPTED, user, FriendshipStatus.ACCEPTED);
 
-        // Extract the friend users from the friendships
         List<User> friendList = friendships.stream()
                 .map(friendship -> friendship.getRequester().equals(user) ? friendship.getAccepter() : friendship.getRequester())
                 .collect(Collectors.toList());

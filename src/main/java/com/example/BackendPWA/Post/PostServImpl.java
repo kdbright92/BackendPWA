@@ -53,10 +53,9 @@ public class PostServImpl implements PostService {
     public boolean deletePostById(Long id) {
         try {
             postRepository.deleteById(id);
-            return true; // Deletion successful
+            return true;
         } catch (Exception e) {
-            // Handle exceptions or log errors if needed
-            return false; // Deletion failed
+            return false;
         }
     }
 

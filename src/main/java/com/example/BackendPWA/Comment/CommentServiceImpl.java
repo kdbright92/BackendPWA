@@ -31,13 +31,12 @@ public class CommentServiceImpl implements CommentService {
     public boolean deleteCommentById(Long id) {
         try {
             commentRepository.deleteById(id);
-            return true; // Deletion successful
+            return true;
         } catch (Exception e) {
-            // Handle exceptions or log errors if needed
-            return false; // Deletion failed
+
+            return false;
         }
     }
 
 
-    // Additional service methods if needed
 }
